@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
-function Pod() {
+function Pod(props) {
+  // const userSliceOfState = props.users;
+  // console.log('userState:', userSliceOfState)
+
   const [pod, setPod] = useState({
     title: '',
     date: '',
@@ -12,9 +15,12 @@ function Pod() {
   const [likes, setLikes] = useState(0)
   const [dislikes, setDislikes] = useState(0)
 
+  console.log(likes)
+
   useEffect(() => {
     nasaPOD()
-  }, [])
+    setLikes(prevLikes => prevLikes + parseInt(props.users.length, 10))
+  }, [props.users.length])
 
   const nasaPOD = () => {
     axios
@@ -28,6 +34,8 @@ function Pod() {
         explanation: res.data.explanation
       })        
     })
+
+    
   }
 
   const liked = () => {
