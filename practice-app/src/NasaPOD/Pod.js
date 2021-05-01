@@ -44,11 +44,19 @@ function Pod(props) {
 
 
   return (
-    <div className="App">
+    <div className="pod">
       <h1>{pod.title}</h1>
       <h2>{pod.date}</h2>
-      <div><img src={pod.image} height='500vh' alt='nasa pic of the day' /></div>
-      <p>{pod.explanation}</p>
+      <img className='imagePod' src={pod.image} height='500vh' alt='nasa pic of the day' />
+
+      <div className='explaination'>
+        <fieldset className='paragraph'>
+          <legend>Description</legend>
+          <p>{pod.explanation}</p>
+        </fieldset>
+      </div>
+      
+      
 
         <span><div>{likes}</div></span><button onClick={liked}>👍</button>
 
